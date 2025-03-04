@@ -7,12 +7,12 @@ namespace eCommerce.API.Repositories
         public static List<Usuario> _db = new List<Usuario>();
         public void Add(Usuario usuario)
         {
-            throw new NotImplementedException();
+            _db.Add(usuario);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            _db.Remove(Get(id));
         }
 
         public List<Usuario> Get()
@@ -22,12 +22,13 @@ namespace eCommerce.API.Repositories
 
         public Usuario Get(int id)
         {
-            return _db.Find(x =>x.Id is id)!;
+            return _db.Find(x => x.Id == id)!;
         }
 
         public void Update(Usuario usuario)
         {
-            throw new NotImplementedException();
+            _db.Remove(Get(usuario.Id));
+            _db.Add(usuario);
         }
     }
 }
