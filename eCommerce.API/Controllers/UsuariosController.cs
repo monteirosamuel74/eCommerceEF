@@ -1,10 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using eCommerce.API.Repositories;
+using eCommerce.Models;
 
-/// <summary>
-/// Summary description for Class1
-/// </summary>
 namespace eCommerce.API.Controllers
 {
 	[Route("api/[controller]")]
@@ -52,9 +50,9 @@ namespace eCommerce.API.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            _repository.Delete(usuario);
+            _repository.Delete(id);
 
-            return Ok(usuario);
+            return Ok(id);
         }
     }
 }
