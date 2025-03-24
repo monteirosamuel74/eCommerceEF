@@ -12,10 +12,17 @@ namespace eCommerce.API.Database
         public DbSet<Contato> Contatos { get; set; }
         public DbSet<EnderecoEntrega> EnderecoEntrega { get; set; }
         public DbSet<Departamento> Departamentos { get; set; }
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    optionsBuilder.UseSqlServer(
-        //        "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=eCommerce;Integrated Security=True;");
-        //}
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Departamento>().HasData(
+                new Departamento { Id = 1, Name = "Mercado" },
+                new Departamento { Id = 2, Name = "Moda" },
+                new Departamento { Id = 3, Name = "Móveis" },
+                new Departamento { Id = 4, Name = "informática" },
+                new Departamento { Id = 5, Name = "Eletroeletrônico" },
+                new Departamento { Id = 6, Name = "Beleza" }
+                );
+        }
     }
 }
